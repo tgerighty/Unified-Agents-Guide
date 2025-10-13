@@ -364,6 +364,8 @@ Request human assistance if:
 // Context: Standard pattern for component props in React/Next.js
 // Prerequisites: Understanding of React props and TypeScript interfaces
 
+import React, { useState } from 'react';
+
 interface ComponentProps {
   id: string; // Unique identifier for the component
   title: string; // Display title for the component
@@ -389,7 +391,7 @@ export const MyComponent: React.FC<ComponentProps> = ({
     try {
       await onSubmit(data);
     } catch (error) {
-      // Error handling follows Section 11 patterns
+      // Error handling follows Section 5.3 patterns
       console.error('Submit failed:', error);
     } finally {
       setLoading(false);
@@ -450,7 +452,7 @@ export const MyComponent: React.FC<ComponentProps> = ({
 - **Utilities**: `lowercase.ts` (utils.ts, helpers.ts)
 - **Types**: `lowercase.ts` (user.ts, product.ts)
 - **Services**: `kebab-case.service.ts` (auth.service.ts, data.service.ts)
-- **Constants**: `UPPER_CASE.ts` (CONFIG.ts, CONSTANTS.ts)
+- **Constants**: `lowercase.ts` (constants.ts, config.ts)
 - **Tests**: `filename.test.ts` (UserProfile.test.ts)
 - **Stories**: `ComponentName.stories.tsx` (UserProfile.stories.tsx)
 
@@ -590,8 +592,6 @@ export const UserProfile: React.FC<UserProfileProps> = ({
     </div>
   );
 };
-
-export default UserProfile;
 ```
 
 #### 5.2.5 Validation Checklist
@@ -602,7 +602,7 @@ export default UserProfile;
 - [ ] **Component Names**: Use PascalCase and are descriptive
 - [ ] **Hook Names**: Use `use` prefix and kebab-case file names
 - [ ] **Constants**: Use UPPER_SNAKE_CASE
-- [ ] **Imports**: Organized with types first, then implementations
+- [ ] **Imports**: Organized following standard order (React/Next.js, third-party, internal, types, relative)
 - [ ] **File Names**: No spaces or special characters (except hyphens)
 - [ ] **Index Files**: Used for barrel exports in component directories
 - [ ] **Co-location**: Related files grouped together
@@ -3016,8 +3016,8 @@ export type AsChildProps<T extends React.ElementType> = {
   asChild?: boolean;
 } & Omit<React.ComponentPropsWithoutRef<T>, 'asChild'>;
 
-// Theme system types
-export interface ThemeConfig {
+// Component theme types
+export interface ComponentThemeConfig {
   colors: {
     primary: string;
     secondary: string;
@@ -4202,7 +4202,7 @@ export const useTheme = () => {
 };
 
 // src/theme/theme.ts
-export interface ThemeConfig {
+export interface DesignSystemThemeConfig {
   colors: {
     primary: string;
     secondary: string;
@@ -5847,11 +5847,11 @@ export class AuthService {
 }
 
 // 3. REFACTOR: Improve code quality while keeping tests green
-export interface UserRepository {
-  findByEmail(email: string): Promise<User | null>;
+export interface AuthUserRepository {
+  findByEmail(email: string): Promise<AuthUser | null>;
 }
 
-export interface User {
+export interface AuthUser {
   id: string;
   email: string;
   password: string;
@@ -8369,21 +8369,21 @@ bash scripts/validate-task-status.sh "$FEATURE_NAME"
 // Prerequisites: Understanding of dependency inversion and domain-driven design
 
 // Domain layer - Core business logic
-export interface UserRepository {
-  findById(id: string): Promise<User | null>;
-  save(user: User): Promise<User>;
+export interface DomainUserRepository {
+  findById(id: string): Promise<DomainUser | null>;
+  save(user: DomainUser): Promise<DomainUser>;
 }
 
-export interface User {
+export interface DomainUser {
   id: string;
   email: string;
   name: string;
 }
 
 export class UserService {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private userRepository: DomainUserRepository) {}
 
-  async createUser(email: string, name: string): Promise<User> {
+  async createUser(email: string, name: string): Promise<DomainUser> {
     // Business logic validation
     if (!email || !name) {
       throw new Error('Invalid user data');
@@ -10502,6 +10502,435 @@ export const securityMonitor = new SecurityMonitor(
 ### 12.3 Performance Optimization
 
 *This section will cover performance tuning guidelines*
+
+---
+
+## 13. Mandatory Rules
+
+### 13.1 Core Development Workflow
+
+**Problem definition → small, safe change → change review → refactor — repeat the loop.**
+
+### 13.2 Essential Rules
+
+- **Read thoroughly**: Before changing anything, read the relevant files end to end, including all call/reference paths
+- **Keep tasks small**: Keep commits and PRs focused and manageable
+- **Document assumptions**: If you make assumptions, record them in the Issue/PR/ADR
+- **Security first**: Never commit or log secrets; validate inputs and encode/normalize outputs
+- **Clear naming**: Avoid premature abstraction and use intention-revealing names
+- **Compare options**: Always evaluate multiple approaches before deciding
+
+## 14. Mindset and Approach
+
+### 14.1 Senior Engineer Thinking
+
+- **Think systematically**: Don't jump to conclusions or rush to solutions
+- **Evaluate approaches**: Always analyze multiple options with pros/cons/risks, then choose the simplest solution
+- **Context matters**: Understand the broader system impact before making changes
+
+### 14.2 Workflow Pattern
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  Problem      │───▶│  Small Change   │───▶│  Change Review  │───▶│   Refactor     │
+│  Definition    │    │                 │    │                 │    │   Loop         │
+│                 │    │ • Targeted      │    │ • Validate     │    │   Repeat       │
+│ • Context      │    │ • Minimal       │    │ • Impact       │    │   Process      │
+│ • Problem      │    │ • Safe          │    │ • Verify       │    │   Continuously  │
+│ • Goal         │    │ • Reversible    │    │ • Document     │    │   Improve      │
+│ • Constraints   │    │                 │    │                 │    │   Quality      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## 15. Code & File Reference Rules
+
+### 15.1 Reading Requirements
+
+- **Read thoroughly**: Read files from start to finish (no partial reads)
+- **Locate dependencies**: Before changing code, find definitions, references, call sites, related tests, docs/config/flags
+- **Full context**: Never change code without reading the entire file
+- **Global search**: Before modifying a symbol, search globally to understand pre/postconditions
+- **Impact notes**: Leave 1-3 line impact notes explaining changes
+
+### 15.2 Reference Checklist
+
+Before modifying any symbol:
+- [ ] Read entire file containing the symbol
+- [ ] Search for all references in the codebase
+- [ ] Understand preconditions and postconditions
+- [ ] Identify all dependent code
+- [ ] Document the impact of the change
+
+## 16. Required Coding Rules
+
+### 16.1 Pre-Development Requirements
+
+- **Problem 1-Pager**: Before coding, write Context/Problem/Goal/Non-Goals/Constraints
+- **Code limits**: 
+  - File ≤ 300 LOC
+  - Function ≤ 50 LOC  
+  - Parameters ≤ 5
+  - Cyclomatic complexity ≤ 10
+- **Refactor when exceeded**: Split/refactor if limits are exceeded
+
+### 16.2 Code Quality Standards
+
+- **Explicit code**: No hidden "magic"
+- **DRY principle**: Follow DRY but avoid premature abstraction
+- **Side effects**: Isolate side effects (I/O, network, global state) at boundary layer
+- **Error handling**: Catch specific exceptions and present clear user-facing messages
+- **Logging**: Use structured logging, never log sensitive data, propagate request/correlation IDs
+- **Time zones**: Account for time zones and DST when handling dates
+
+## 17. Testing Rules
+
+### 17.1 Testing Requirements
+
+- **New code requires tests**: All new code must include tests
+- **Regression tests**: Bug fixes must include regression tests (write to fail first)
+- **Deterministic tests**: Tests must be deterministic and independent
+- **Mock external systems**: Replace external systems with fakes/contract tests
+- **Coverage**: Include ≥1 happy path and ≥1 failure path in e2e tests
+- **Concurrency**: Proactively assess risks from concurrency/locks/retries
+
+### 17.2 Testing Patterns
+
+```typescript
+// Example: Test structure
+describe('UserService', () => {
+  // Happy path test
+  it('should create user with valid data', async () => {
+    const userData = { email: 'test@example.com', name: 'Test User' };
+    const user = await userService.createUser(userData.email, userData.name);
+    expect(user).toBeDefined();
+    expect(user.email).toBe(userData.email);
+  });
+
+  // Failure path test
+  it('should throw error for invalid email', async () => {
+    const userData = { email: 'invalid-email', name: 'Test User' };
+    await expect(userService.createUser(userData.email, userData.name))
+      .rejects.toThrow('Invalid email format');
+  });
+});
+```
+
+## 18. Security Rules
+
+### 18.1 Security Principles
+
+- **No secrets**: Never leave secrets in code/logs/tickets
+- **Input validation**: Always validate, normalize, and encode inputs
+- **Parameterized operations**: Use parameterized operations for database queries
+- **Least privilege**: Apply the Principle of Least Privilege
+
+### 18.2 Security Patterns
+
+```typescript
+// Input validation example
+export function validateUserInput(input: unknown): ValidationResult {
+  const schema = z.object({
+    email: z.string().email(),
+    name: z.string().min(1).max(100)
+  });
+  
+  return schema.safeParse(input);
+}
+
+// Parameterized query example
+export async function findUserById(id: string): Promise<User | null> {
+  const query = 'SELECT * FROM users WHERE id = $1';
+  return await db.query(query, [id]);
+}
+```
+
+## 19. Clean Code Rules
+
+### 19.1 Code Structure
+
+- **Intention-revealing names**: Use clear, descriptive names
+- **Single responsibility**: Each function should do one thing
+- **Side effects at boundary**: Keep side effects at the boundary layer
+- **Guard clauses first**: Prefer guard clauses over nested conditions
+- **Constants**: Symbolize constants (no hardcoding)
+- **Input → Process → Return**: Structure code as Input → Process → Return
+
+### 19.2 Code Patterns
+
+```typescript
+// Good: Early returns and guard clauses
+function processUser(user: User | null): ProcessedUser | null {
+  if (!user) return null;
+  if (!user.isActive) return null;
+  if (!hasPermission(user)) return null;
+  
+  return transformUser(user);
+}
+
+// Good: Constants with clear names
+const MAX_RETRY_ATTEMPTS = 3;
+const DEFAULT_TIMEOUT_MS = 5000;
+const API_BASE_URL = 'https://api.example.com';
+```
+
+### 19.3 Error Reporting
+
+- **Specific errors**: Report failures with specific error messages
+- **Usage examples**: Make tests serve as usage examples with boundary and failure cases
+
+## 20. Anti-Pattern Rules
+
+### 20.1 What to Avoid
+
+- **No context changes**: Don't modify code without reading the whole context
+- **No secrets**: Don't expose secrets in any form
+- **No ignored failures**: Don't ignore failures or warnings
+- **No unjustified optimization**: Don't optimize without clear performance evidence
+- **No unnecessary abstraction**: Don't introduce abstractions without clear need
+- **No broad exceptions**: Don't overuse broad exception types
+
+### 20.2 Common Anti-Patterns
+
+```typescript
+// AVOID: Uninitialized variables
+let user: User | undefined;
+if (condition) {
+  user = fetchUser();
+}
+
+// PREFER: IIFE with type annotation
+const user: User | null = (() => {
+  if (!condition) return null;
+  return fetchUser();
+})();
+
+// AVOID: Multiple nested ifs
+if (condition1) {
+  if (condition2) {
+    if (condition3) {
+      doSomething();
+    }
+  }
+}
+
+// PREFER: Guard clauses
+if (!condition1 || !condition2 || !condition3) return;
+doSomething();
+```
+
+## 21. TypeScript Specific Rules
+
+### 21.1 Import and Export Rules
+
+- **Normal imports**: Always use normal imports instead of dynamic imports
+- **No require**: Always use ESM imports, never CommonJS require
+- **Absolute imports**: Prefer non-relative imports with package names
+- **Explicit array types**: Always specify types for arrays
+
+```typescript
+// Good: Normal imports
+import React from 'react';
+import { useState } from 'react';
+import fs from 'node:fs';
+
+// Good: Explicit array types
+const items: string[] = [];
+const users: User[] = [];
+const numbers: number[] = [];
+
+// Good: Object arguments for multiple parameters
+function createUser({ email, name, role }: {
+  email: string;
+  name: string;
+  role: string;
+}): User {
+  // implementation
+}
+```
+
+### 21.2 Function and Variable Rules
+
+- **Arrow functions**: Always use {} block body in arrow functions
+- **No any**: Never use `any` type, always find proper types
+- **IIFE over late assignment**: Use IIFE instead of uninitialized variables
+- **URL construction**: Use `new URL(path, baseUrl)` instead of string interpolation
+
+```typescript
+// Good: Arrow function with block body
+const handleClick = () => {
+  setState('value');
+  doSomethingElse();
+};
+
+// Good: IIFE pattern
+const result: string = (() => {
+  if (!condition) return '';
+  return processValue();
+})();
+
+// Good: URL construction
+const url = new URL('/api/users', 'https://api.example.com');
+```
+
+### 21.3 Type Safety Rules
+
+- **Read .d.ts files**: When encountering TypeScript errors, read the type definitions
+- **No as any**: Never use `(x as any).field` without checking if it compiles first
+- **Prefer || over in**: Use `obj?.x || ''` instead of `'x' in obj ? obj.x : ''`
+
+## 22. Prisma Specific Rules
+
+### 22.1 Database Interaction
+
+- **Read schema first**: Always read schema.prisma before writing queries
+- **No schema changes**: Never add tables or modify schema.prisma yourself
+- **No mutations**: NEVER run `pnpm prisma db push` or other mutating commands
+- **Upsert preferred**: Use upsert calls over updates to handle missing rows
+
+### 22.2 Query Patterns
+
+```typescript
+// Good: Simple query with authorization
+const user = await prisma.user.findFirst({
+  where: { 
+    id: userId,
+    organization: { users: { some: { userId } } }
+  }
+});
+
+if (!user) {
+  throw new AppError('User not found or access denied');
+}
+
+// Good: Parallel queries for relations
+const [user, posts] = await Promise.all([
+  prisma.user.findUnique({ where: { id: userId } }),
+  prisma.post.findMany({ where: { userId } })
+]);
+
+// AVOID: Deep nesting
+const badQuery = prisma.user.findFirst({
+  where: { id: userId },
+  include: {
+    posts: {
+      include: {
+        comments: {
+          include: {
+            author: true // Too deep!
+          }
+        }
+      }
+    }
+  }
+});
+```
+
+### 22.3 Transaction Rules
+
+- **Array transactions**: Use array of operations, not interactive transactions
+- **No await during construction**: Never call await while building operations array
+
+```typescript
+// Good: Array transaction
+const operations: Prisma.PrismaPromise<any>[] = [
+  prisma.user.delete({ where: { id } }),
+  prisma.profile.delete({ where: { userId: id } }),
+  prisma.settings.delete({ where: { userId: id } })
+];
+
+await prisma.$transaction(operations);
+```
+
+## 23. Styling Rules
+
+### 23.1 Tailwind Guidelines
+
+- **Use multiples of 4**: Prefer spacing multiples of 4 (p-4, gap-4, etc.)
+- **Flex over margin**: Use flexbox gaps and grid gaps instead of margins
+- **shadcn colors**: Use shadcn theme colors instead of default Tailwind colors
+- **Simple styles**: Keep styles simple and use flex and gap
+
+```typescript
+// Good: Flex with gap
+<div className="flex flex-col gap-4">
+  <Component1 />
+  <Component2 />
+</div>
+
+// Good: Size-4 over w-4 h-4
+<Icon className="size-4" />
+
+// Good: cn utility
+<div className={cn('base-class', isActive && 'active-class')} />
+```
+
+### 23.2 Component Guidelines
+
+- **shadcn CLI**: Use shadcn CLI to add new components, don't write them manually
+- **Reuse components**: Prefer reusing existing components when possible
+- **Simple breakpoints**: Keep breakpoints and responsive design simple
+
+## 24. Error Handling Rules
+
+### 24.1 Error Patterns
+
+- **AppError class**: Use AppError for expected errors
+- **ResponseError**: Use ResponseError for HTTP error responses
+
+```typescript
+// Expected error
+if (!user.subscription) {
+  throw new AppError('User has no subscription');
+}
+
+// HTTP error response
+if (!hasPermission) {
+  throw new ResponseError(
+    403,
+    JSON.stringify({ message: 'Access denied' })
+  );
+}
+```
+
+## 25. Changelog Rules
+
+### 25.1 Package Types
+
+- **Public packages**: Have version field in package.json, published to npm
+- **Private packages**: Have `private: true` field in package.json
+
+### 25.2 Changelog Format
+
+**Public packages**:
+```markdown
+## 0.1.3
+
+### Patch Changes
+- fix authentication bug
+- improve error messages
+
+## 0.1.2
+
+### Patch Changes
+- add support for new feature
+```
+
+**Private packages**:
+```markdown
+# Changelog
+
+## 2025-01-24 19:50
+- improve user experience
+- fix startup crash
+```
+
+### 25.3 Writing Guidelines
+
+- **Present tense**: Use present tense (fix, improve, add)
+- **Concise**: Omit unnecessary verbs (implement, added)
+- **No nesting**: Don't use nested bullet points
+- **Code examples**: Include code snippets when applicable
+- **Markdown**: Use proper markdown formatting
 
 ---
 
