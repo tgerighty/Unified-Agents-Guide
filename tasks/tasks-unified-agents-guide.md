@@ -1,0 +1,336 @@
+# Tasks from unified-agents-guide
+
+## 1.0 Project Foundation & Architecture
+- [x] 1.1 **[MVG-PRIORITY]** Define the core guide structure and guiding principles. status: completed
+  - [x] 1.1.1 Research and consolidate best practices from existing agent documentation. status: completed
+  - [x] 1.1.2 Draft the main sections: Guiding Principles, Getting Started, Core Workflow, Human Escalation, and Project Structure. status: completed
+  - [x] 1.1.3 Define a simple, consistent template for all sections. status: completed
+  - [x] 1.1.4 Create the initial `agents.md` file with the foundational structure. status: completed
+- [x] 1.2 **[MVG-PRIORITY]** Research existing Factory.ai droid documentation patterns status: completed
+  - [x] 1.2.1 Analyze current droid documentation approaches status: completed
+  - [x] 1.2.2 Identify common patterns and inconsistencies status: completed
+  - [x] 1.2.3 Research best practices for AI agent documentation status: completed
+  - [x] 1.2.4 Document findings and recommendations status: completed
+- [x] 1.3 **[MVG-PRIORITY]** Establish guide sections and hierarchy status: completed
+  - [x] 1.3.1 Define major sections based on PRD requirements status: completed
+  - [x] 1.3.2 Create section relationships and dependencies status: completed
+  - [x] 1.3.3 Establish content depth for each section status: completed
+  - [x] 1.3.4 Validate structure with stakeholder requirements status: completed
+- [x] 1.4 Create template structure for modular content status: completed
+  - [x] 1.4.1 Design template for consistent section formatting status: completed
+  - [x] 1.4.2 Create reusable content blocks status: completed
+  - [x] 1.4.3 Establish modular content organization status: completed
+  - [x] 1.4.4 Validate template usability for droids status: completed
+
+## 2.0 Coding Standards & Best Practices
+- [x] 2.1 **[MVG-PRIORITY]** Document TypeScript coding standards for droids status: completed
+  - [x] 2.1.1 Research existing TypeScript patterns in Factory.ai codebase status: completed
+  - [x] 2.1.2 Analyze current droid TypeScript implementations status: completed
+  - [x] 2.1.3 Define comprehensive coding standards and guidelines status: completed
+  - [x] 2.1.4 Create validation checklist and examples for droids status: completed
+- [x] 2.2 Define naming conventions and file organization patterns status: completed
+  - [x] 2.2.1 Research current naming conventions across droid projects status: completed
+  - [x] 2.2.2 Identify inconsistencies and best practices status: completed
+  - [x] 2.2.3 Define standardized naming and organization rules status: completed
+  - [x] 2.2.4 Create implementation guidelines and validation tools status: completed
+- [x] 2.3 Create error handling and logging best practices guide status: completed
+  - [x] 2.3.1 Research existing error handling patterns in droids status: completed
+  - [x] 2.3.2 Analyze logging approaches and consistency issues status: completed
+  - [x] 2.3.3 Define comprehensive error handling standards status: completed
+  - [x] 2.3.4 Create logging framework guidelines and examples status: completed
+- [x] 2.4 Document security best practices specific to droids status: completed
+  - [x] 2.4.1 Research security vulnerabilities in current droid implementations status: completed
+  - [x] 2.4.2 Analyze security patterns and identify gaps status: completed
+  - [x] 2.4.3 Define comprehensive security guidelines status: completed
+  - [x] 2.4.4 Create security validation checklist and tools status: completed
+- [x] 2.5 Define API design patterns for droid interactions status: completed
+  - [x] 2.5.1 Research existing API patterns in droid communications status: completed
+  - [x] 2.5.2 Analyze current interaction approaches and inconsistencies status: completed
+  - [x] 2.5.3 Define standardized API design principles status: completed
+  - [x] 2.5.4 Create API documentation templates and validation tools status: completed
+- [x] 2.6 **[COMPLETED]** Document shadcn/ui integration patterns and best practices status: completed
+  - [x] 2.6.1 Research shadcn/ui architecture and component patterns status: completed
+  - [x] 2.6.2 Define integration guidelines with Next.js 15 status: completed
+  - [x] 2.6.3 Create best practices for component usage status: completed
+  - [x] 2.6.4 Document TypeScript integration patterns status: completed
+- [x] 2.7 **[COMPLETED]** Create shadcn/ui CLI usage guidelines for droids status: completed
+  - [x] 2.7.1 Document CLI installation and setup process status: completed
+  - [x] 2.7.2 Create API key usage patterns and security guidelines status: completed
+  - [x] 2.7.3 Define block installation and management procedures status: completed
+  - [x] 2.7.4 Establish CLI error handling and troubleshooting status: completed
+- [ ] 2.8 Define shadcn/ui component customization approaches status: in_progress
+  - [x] 2.8.1 Document theme customization patterns status: completed
+  - [x] 2.8.2 Create component variation guidelines status: completed
+  - [x] 2.8.3 Define styling override approaches status: completed
+  - [x] 2.8.4 Establish design system integration patterns status: completed
+
+## 3.0 Project Management Methodology
+- [ ] 3.1 Document AI dev tasks workflow integration status: pending
+  - [ ] 3.1.1 Research current AI dev tasks integration patterns
+  - [ ] 3.1.2 Analyze workflow bottlenecks and inefficiencies
+  - [ ] 3.1.3 Define optimized workflow integration procedures
+  - [ ] 3.1.4 Create validation and monitoring framework
+- [ ] 3.2 Define feature branch management strategy status: pending
+  - [ ] 3.2.1 Research current branch management approaches
+  - [ ] 3.2.2 Analyze merge conflicts and resolution patterns
+  - [ ] 3.2.3 Define standardized branching strategy
+  - [ ] 3.2.4 Create automation tools and validation procedures
+- [ ] 3.3 Create task list management guidelines status: pending
+  - [ ] 3.3.1 Research existing task management patterns
+  - [ ] 3.3.2 Analyze task assignment and tracking approaches
+  - [ ] 3.3.3 Define comprehensive task management framework
+  - [ ] 3.3.4 Create automation and monitoring tools
+- [ ] 3.4 Document droid delegation and coordination patterns status: pending
+  - [ ] 3.4.1 Research current droid interaction patterns
+  - [ ] 3.4.2 Analyze coordination challenges and solutions
+  - [ ] 3.4.3 Define standardized delegation protocols
+  - [ ] 3.4.4 Create coordination validation and monitoring tools
+- [ ] 3.5 Define code review and approval processes status: pending
+  - [ ] 3.5.1 Research current code review approaches
+  - [ ] 3.5.2 Analyze review bottlenecks and quality issues
+  - [ ] 3.5.3 Define standardized review and approval workflow
+  - [ ] 3.5.4 Create automation tools and quality metrics
+
+## 4.0 Testing Approaches & TDD Implementation
+- [x] 4.1 **[MVG-PRIORITY]** Define TDD methodology for droid development status: completed
+  - [x] 4.1.1 Research current testing patterns in droid development status: completed
+  - [x] 4.1.2 Analyze TDD adoption challenges and solutions status: completed
+  - [x] 4.1.3 Define comprehensive TDD methodology for droids status: completed
+  - [x] 4.1.4 Create TDD validation tools and training materials status: completed
+- [ ] 4.2 Document testing strategies for 90-100% coverage requirements status: pending
+  - [ ] 4.2.1 Research current coverage measurement approaches
+  - [ ] 4.2.2 Analyze coverage gaps and testing blind spots
+  - [ ] 4.2.3 Define comprehensive coverage strategy
+  - [ ] 4.2.4 Create coverage validation and monitoring tools
+- [ ] 4.3 Create unit testing patterns and best practices status: pending
+  - [ ] 4.3.1 Research existing unit testing patterns in droids
+  - [ ] 4.3.2 Analyze testing challenges and anti-patterns
+  - [ ] 4.3.3 Define standardized unit testing framework
+  - [ ] 4.3.4 Create testing templates and validation tools
+- [ ] 4.4 Document integration testing approaches for droid interactions status: pending
+  - [ ] 4.4.1 Research current integration testing patterns
+  - [ ] 4.4.2 Analyze droid interaction testing challenges
+  - [ ] 4.4.3 Define comprehensive integration testing strategy
+  - [ ] 4.4.4 Create integration testing automation tools
+- [ ] 4.5 Define performance testing guidelines status: pending
+  - [ ] 4.5.1 Research current performance testing approaches
+  - [ ] 4.5.2 Analyze performance bottlenecks and metrics
+  - [ ] 4.5.3 Define standardized performance testing framework
+  - [ ] 4.5.4 Create performance monitoring and benchmarking tools
+- [ ] 4.6 Create test data management and mocking strategies status: pending
+  - [ ] 4.6.1 Research current test data management approaches
+  - [ ] 4.6.2 Analyze mocking challenges and inconsistencies
+  - [ ] 4.6.3 Define comprehensive test data and mocking strategy
+  - [ ] 4.6.4 Create test data automation and validation tools
+
+## 5.0 Deployment Strategies
+- [ ] 5.1 Document deployment pipeline patterns for droids status: pending
+  - [ ] 5.1.1 Research current deployment patterns in droid projects
+  - [ ] 5.1.2 Analyze deployment challenges and failure modes
+  - [ ] 5.1.3 Define standardized deployment pipeline framework
+  - [ ] 5.1.4 Create deployment automation and monitoring tools
+- [ ] 5.2 Define environment management strategies status: pending
+  - [ ] 5.2.1 Research current environment management approaches
+  - [ ] 5.2.2 Analyze environment consistency issues
+  - [ ] 5.2.3 Define comprehensive environment management strategy
+  - [ ] 5.2.4 Create environment validation and synchronization tools
+- [ ] 5.3 Create rollback and recovery procedures status: pending
+  - [ ] 5.3.1 Research current rollback and recovery patterns
+  - [ ] 5.3.2 Analyze rollback failure scenarios and challenges
+  - [ ] 5.3.3 Define comprehensive rollback and recovery procedures
+  - [ ] 5.3.4 Create rollback automation and validation tools
+- [ ] 5.4 Document monitoring and observability practices status: pending
+  - [ ] 5.4.1 Research current monitoring approaches in droid deployments
+  - [ ] 5.4.2 Analyze observability gaps and blind spots
+  - [ ] 5.4.3 Define comprehensive monitoring and observability framework
+  - [ ] 5.4.4 Create monitoring automation and alerting tools
+- [ ] 5.5 Define version management and release processes status: pending
+  - [ ] 5.5.1 Research current version management approaches
+  - [ ] 5.5.2 Analyze release process challenges and inconsistencies
+  - [ ] 5.5.3 Define standardized version management and release strategy
+  - [ ] 5.5.4 Create release automation and validation tools
+
+## 6.0 Modular Code Patterns
+- [ ] 6.1 Document modular architecture patterns for droids status: pending
+  - [ ] 6.1.1 Research current modular patterns in droid implementations
+  - [ ] 6.1.2 Analyze modularity challenges and coupling issues
+  - [ ] 6.1.3 Define comprehensive modular architecture framework
+  - [ ] 6.1.4 Create modularity validation and analysis tools
+- [ ] 6.2 Define component reusability guidelines status: pending
+  - [ ] 6.2.1 Research current component reuse patterns
+  - [ ] 6.2.2 Analyze reusability challenges and inconsistencies
+  - [ ] 6.2.3 Define standardized component reusability guidelines
+  - [ ] 6.2.4 Create reusability validation and cataloging tools
+- [ ] 6.3 Create plugin and extension patterns status: pending
+  - [ ] 6.3.1 Research current plugin and extension approaches
+  - [ ] 6.3.2 Analyze extension challenges and security concerns
+  - [ ] 6.3.3 Define comprehensive plugin and extension framework
+  - [ ] 6.3.4 Create extension validation and security tools
+- [ ] 6.4 Document state management patterns status: pending
+  - [ ] 6.4.1 Research current state management approaches in droids
+  - [ ] 6.4.2 Analyze state synchronization challenges
+  - [ ] 6.4.3 Define standardized state management patterns
+  - [ ] 6.4.4 Create state validation and debugging tools
+- [ ] 6.5 Define configuration management approaches status: pending
+  - [ ] 6.5.1 Research current configuration management patterns
+  - [ ] 6.5.2 Analyze configuration challenges and validation issues
+  - [ ] 6.5.3 Define comprehensive configuration management strategy
+  - [ ] 6.5.4 Create configuration validation and synchronization tools
+
+## 7.0 Specialized Droid Integration
+- [ ] 7.1 Document better-auth-integration-droid-forge patterns status: pending
+  - [ ] 7.1.1 Research better-auth integration patterns and use cases
+  - [ ] 7.1.2 Analyze authentication workflow requirements
+  - [ ] 7.1.3 Define standardized integration patterns and protocols
+  - [ ] 7.1.4 Create integration validation and testing tools
+- [ ] 7.2 Document trpc-tanstack-integration-droid-forge patterns status: pending
+  - [ ] 7.2.1 Research tRPC and TanStack Query integration patterns
+  - [ ] 7.2.2 Analyze type safety and caching requirements
+  - [ ] 7.2.3 Define standardized integration framework
+  - [ ] 7.2.4 Create integration validation and performance tools
+- [ ] 7.3 Document security-audit-droid-forge integration status: pending
+  - [ ] 7.3.1 Research security audit patterns and vulnerability scanning
+  - [ ] 7.3.2 Analyze security assessment requirements and workflows
+  - [ ] 7.3.3 Define standardized security audit integration
+  - [ ] 7.3.4 Create security validation and reporting tools
+- [ ] 7.4 Document frontend-engineer-droid-forge patterns status: pending
+  - [ ] 7.4.1 Research frontend engineering patterns and best practices
+  - [ ] 7.4.2 Analyze UI/UX implementation requirements
+  - [ ] 7.4.3 Define standardized frontend development patterns
+  - [ ] 7.4.4 Create frontend validation and accessibility tools
+- [ ] 7.5 Document typescript-integration patterns status: pending
+  - [ ] 7.5.1 Research TypeScript integration patterns across droids
+  - [ ] 7.5.2 Analyze type safety and compilation challenges
+  - [ ] 7.5.3 Define comprehensive TypeScript integration framework
+  - [ ] 7.5.4 Create type validation and debugging tools
+- [ ] 7.6 Document manager-orchestrator-droid-forge coordination status: pending
+  - [ ] 7.6.1 Research manager orchestrator coordination patterns
+  - [ ] 7.6.2 Analyze workflow delegation and synchronization challenges
+  - [ ] 7.6.3 Define standardized coordination protocols
+  - [ ] 7.6.4 Create coordination validation and monitoring tools
+
+## 8.0 AI Dev Tasks Workflow Integration
+- [ ] 8.1 Create process sync documentation status: pending
+  - [ ] 8.1.1 Research current process sync patterns and tools
+  - [ ] 8.1.2 Analyze synchronization challenges and failure modes
+  - [ ] 8.1.3 Define comprehensive process sync framework
+  - [ ] 8.1.4 Create sync validation and monitoring tools
+- [ ] 8.2 Document PRD analysis and task generation patterns status: pending
+  - [ ] 8.2.1 Research current PRD analysis approaches and tools
+  - [ ] 8.2.2 Analyze task generation challenges and inconsistencies
+  - [ ] 8.2.3 Define standardized PRD analysis and task generation
+  - [ ] 8.2.4 Create generation validation and quality tools
+- [ ] 8.3 Define two-phase task generation workflow status: pending
+  - [ ] 8.3.1 Research current task generation approaches
+  - [ ] 8.3.2 Analyze workflow efficiency and bottlenecks
+  - [ ] 8.3.3 Define optimized two-phase generation workflow
+  - [ ] 8.3.4 Create workflow validation and automation tools
+- [ ] 8.4 Create validation and error handling procedures status: pending
+  - [ ] 8.4.1 Research current validation and error handling patterns
+  - [ ] 8.4.2 Analyze failure scenarios and recovery challenges
+  - [ ] 8.4.3 Define comprehensive validation and error handling
+  - [ ] 8.4.4 Create validation automation and debugging tools
+- [ ] 8.5 Document manager droid integration patterns status: pending
+  - [ ] 8.5.1 Research manager droid integration approaches
+  - [ ] 8.5.2 Analyze integration challenges and coordination issues
+  - [ ] 8.5.3 Define standardized manager droid integration
+  - [ ] 8.5.4 Create integration validation and monitoring tools
+
+## 9.0 Documentation & Maintenance
+- [ ] 9.1 Create documentation maintenance guidelines status: pending
+  - [ ] 9.1.1 Research current documentation maintenance approaches
+  - [ ] 9.1.2 Analyze maintenance challenges and consistency issues
+  - [ ] 9.1.3 Define comprehensive documentation maintenance framework
+  - [ ] 9.1.4 Create maintenance automation and validation tools
+- [ ] 9.2 Define update and version control for the guide status: pending
+  - [ ] 9.2.1 Research current version control approaches for documentation
+  - [ ] 9.2.2 Analyze update process challenges and bottlenecks
+  - [ ] 9.2.3 Define standardized update and version control strategy
+  - [ ] 9.2.4 Create update automation and validation tools
+- [ ] 9.3 Document community contribution guidelines status: pending
+  - [ ] 9.3.1 Research current contribution patterns and workflows
+  - [ ] 9.3.2 Analyze contribution challenges and quality issues
+  - [ ] 9.3.3 Define standardized community contribution guidelines
+  - [ ] 9.3.4 Create contribution validation and automation tools
+- [ ] 9.4 Create troubleshooting and FAQ section status: pending
+  - [ ] 9.4.1 Research common issues and troubleshooting patterns
+  - [ ] 9.4.2 Analyze user support challenges and information gaps
+  - [ ] 9.4.3 Define comprehensive troubleshooting framework
+  - [ ] 9.4.4 Create FAQ automation and knowledge base tools
+- [ ] 9.5 Define guide governance and ownership status: pending
+  - [ ] 9.5.1 Research current governance patterns and ownership models
+  - [ ] 9.5.2 Analyze governance challenges and decision-making issues
+  - [ ] 9.5.3 Define comprehensive guide governance framework
+  - [ ] 9.5.4 Create governance automation and monitoring tools
+
+## 10.0 Quality Assurance & Review
+- [ ] 10.1 Conduct comprehensive guide review status: pending
+  - [ ] 10.1.1 Research current review approaches and quality standards
+  - [ ] 10.1.2 Analyze review challenges and consistency issues
+  - [ ] 10.1.3 Define comprehensive review framework and criteria
+  - [ ] 10.1.4 Create review automation and validation tools
+- [ ] 10.2 Validate all code examples and patterns status: pending
+  - [ ] 10.2.1 Research current validation approaches for code examples
+  - [ ] 10.2.2 Analyze validation challenges and testing gaps
+  - [ ] 10.2.3 Define comprehensive validation framework
+  - [ ] 10.2.4 Create validation automation and testing tools
+- [ ] 10.3 Perform accessibility review status: pending
+  - [ ] 10.3.1 Research current accessibility standards and guidelines
+  - [ ] 10.3.2 Analyze accessibility challenges and compliance issues
+  - [ ] 10.3.3 Define comprehensive accessibility review framework
+  - [ ] 10.3.4 Create accessibility validation and testing tools
+- [ ] 10.4 Create feedback collection mechanism status: pending
+  - [ ] 10.4.1 Research current feedback collection approaches
+  - [ ] 10.4.2 Analyze feedback challenges and processing issues
+  - [ ] 10.4.3 Define comprehensive feedback collection framework
+  - [ ] 10.4.4 Create feedback automation and analysis tools
+- [ ] 10.5 Finalize and publish agents.md guide status: pending
+  - [ ] 10.5.1 Research current publishing approaches and distribution channels
+  - [ ] 10.5.2 Analyze publishing challenges and accessibility issues
+  - [ ] 10.5.3 Define comprehensive publishing and distribution strategy
+  - [ ] 10.5.4 Create publishing automation and monitoring tools
+
+## 11.0 Governance & Workflow Patterns
+- [x] 11.1 **[MVG-PRIORITY]** Define and document the Fast-Track Workflow for simple tasks. status: completed
+  - [x] 11.1.1 Identify criteria for a task to be considered "simple" (e.g., single-file change, no logic alterations, documentation typos). status: completed
+  - [x] 11.1.2 Outline the condensed workflow: `Understand -> Implement -> Verify`. status: completed
+  - [x] 11.1.3 Document the workflow in the `Core Agent Workflow & Mindset` section of the guide. status: completed
+  - [x] 11.1.4 Provide three examples of simple tasks that would use this workflow. status: completed
+- [x] 11.2 Define the process for creating and maintaining Architecture Decision Records (ADRs). status: completed
+  - [x] 11.2.1 Research lightweight ADR templates (e.g., Markdown-based). status: completed
+  - [x] 11.2.2 Define the process: When to create an ADR (e.g., for significant deviations), who approves it, and where it's stored. status: completed
+  - [x] 11.2.3 Create a template ADR file within the project structure (e.g., `docs/adr/template.md`). status: completed
+  - [x] 11.2.4 Document the ADR process in the `Guiding Principles` section of the guide. status: completed
+- [ ] 11.3 Define guide maintenance and update procedures
+  - [ ] 11.3.1 Establish quarterly review schedule for guide updates
+  - [ ] 11.3.2 Define process for incorporating feedback and lessons learned
+  - [ ] 11.3.3 Create version control and release management procedures
+  - [ ] 11.3.4 Document guide ownership and governance model
+- [ ] 11.4 Create validation and quality assurance procedures
+  - [ ] 11.4.1 Define quality criteria for guide content
+  - [ ] 11.4.2 Create automated validation tools for guide consistency
+  - [ ] 11.4.3 Establish peer review process for guide updates
+  - [ ] 11.4.4 Define metrics for guide effectiveness and usage
+
+## Implementation Notes
+- Phased implementation with comprehensive review at each major section
+- Follow existing Factory.ai patterns and maintain compatibility
+- Document all APIs and integration points clearly
+- Use specialized droids for content creation and review where applicable
+- Maintain focus on Factory.ai droids exclusively, no general AI assistant content
+- Ensure all code examples follow TDD principles with 90-100% coverage requirements
+- Validate all workflow processes through actual implementation testing
+- **NEW**: Emphasize shadcn/ui as primary component library with extensive usage
+- **NEW**: Include shadcn blocks CLI integration patterns and API key usage
+- **NEW**: Document component customization and design system integration approaches
+- **COMPLETED**: Added comprehensive icon library integration (HugeIcons, LineIcons) with shadcnblocks.com priority
+- **COMPLETED**: Implemented unified icon system with provider priority and fallback handling
+- **COMPLETED**: Added shadcnblocks.com CLI integration with security guidelines and API key management
+- **COMPLETED**: Created icon component examples and validation checklists for consistent usage
+- **NEW**: All tasks follow 4-subtask pattern: Research → Analysis → Definition → Creation
+- **NEW**: Each subtask is designed for droid execution with clear deliverables
+- **NEW**: Subtasks maintain logical progression within high-level task context
+- **NEW**: Focus on actionable, measurable outcomes suitable for specialized droids
+- **UPDATED**: MVG strategy prioritized with key sections marked as [MVG-PRIORITY]
+- **UPDATED**: Added Governance & Workflow Patterns section for ADR and Fast-Track workflows
+- **UPDATED**: Enhanced flexibility principles and human escalation protocols
