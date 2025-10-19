@@ -53,21 +53,22 @@
 2. [Essential Rules](#2-essential-rules)
 3. [Mindset and Approach](#3-mindset-and-approach)
 4. [Code & File Reference Rules](#4-code--file-reference-rules)
-5. [Required Coding Rules](#5-required-coding-rules)
-6. [Testing Rules](#6-testing-rules)
-7. [Security Rules](#7-security-rules)
-8. [Clean Code Rules](#8-clean-code-rules)
-9. [Anti-Pattern Rules](#9-anti-pattern-rules)
-10. [TypeScript Specific Rules](#10-typescript-specific-rules)
-11. [Prisma Specific Rules](#11-prisma-specific-rules)
-12. [Styling Rules](#12-styling-rules)
-13. [Error Handling Rules](#13-error-handling-rules)
-14. [Changelog Rules](#14-changelog-rules)
+5. [Subagent/Droid Usage Rules](#5-subagentdroid-usage-rules)
+6. [Required Coding Rules](#6-required-coding-rules)
+7. [Testing Rules](#7-testing-rules)
+8. [Security Rules](#8-security-rules)
+9. [Clean Code Rules](#9-clean-code-rules)
+10. [Anti-Pattern Rules](#10-anti-pattern-rules)
+11. [TypeScript Specific Rules](#11-typescript-specific-rules)
+12. [Prisma Specific Rules](#12-prisma-specific-rules)
+13. [Styling Rules](#13-styling-rules)
+14. [Error Handling Rules](#14-error-handling-rules)
+15. [Changelog Rules](#15-changelog-rules)
 
 ### 🏗️ FOUNDATIONAL LAYER
-15. [Guiding Principles](#15-guiding-principles)
-16. [Getting Started](#16-getting-started)
-17. [Core Agent Workflow & Mindset](#17-core-agent-workflow--mindset)
+16. [Guiding Principles](#16-guiding-principles)
+17. [Getting Started](#17-getting-started)
+18. [Core Agent Workflow & Mindset](#18-core-agent-workflow--mindset)
 
 ### 🔧 CORE FRAMEWORKS
 - **Next.js 15**: React framework with App Router
@@ -75,10 +76,13 @@
 - **tRPC**: End-to-end typesafe APIs
 - **TanStack Query**: Server state management and caching
 - **Drizzle ORM**: Type-safe SQL toolkit for PostgreSQL
-- **PostgreSQL 18**: Primary database with advanced features
-- **Valkey 8**: Caching and session storage
+- **PostgreSQL 18**: Primary database with advanced features, yes really 18 it was released sept 2025
+- **PGbouncer**: efficient connections to postgress
+- **Ressis latest**: Caching and session storage
 - **Better Auth**: Modern authentication solution
 - **shadcn/ui**: Component library with extensive usage
+- **shadcn/blocks premium**: via shadcn cli licensed
+- **BullMQ**: queuing
 
 ### 🔧 DEVELOPMENT ENVIRONMENT
 - **Docker**: Containerized development with hot reload mounts
@@ -154,7 +158,7 @@ Before modifying any symbol:
 - [ ] Identify all dependent code
 - [ ] Document the impact of the change
 
-### Sub-Task Droid Context Guidelines
+### Sub-Task Droid and Agent Context Guidelines
 
 When delegating to sub-task droids, provide focused and limited context:
 
@@ -198,7 +202,171 @@ When working with Claude Code, leverage specialized droids for optimal results:
 }
 ```
 
-## 5. Required Coding Rules
+## 5. Agent and Droid Usage Rules
+
+### Extensive Usage Philosophy (MUST)
+
+**USE AGENTS AND DROIDS EXTENSIVELY - this is the primary workflow:**
+- [ ] **Default to delegation**: Always consider delegating to specialized agents/droids first
+- [ ] **Leverage specialization**: Each agent/droid has deep expertise in their domain
+- [ ] **Concurrent execution**: Multiple agents/droids can and should run simultaneously
+- [ ] **Efficiency focus**: Specialized agents/droids complete tasks faster and with higher quality
+- [ ] **Scalable approach**: Complex projects benefit from distributed specialized work
+
+**Direct tool usage is exceptional:**
+- [ ] **Simple queries only**: Basic file reading, directory listing, simple information gathering
+- [ ] **No complex work**: Never attempt complex multi-step tasks directly
+- [ ] **No specialized domains**: Don't handle frontend, backend, security, or database work directly
+
+### 1:1:1:1 Delegation Pattern (MUST)
+
+**Core principle: 1 Task → 1 Agent/Droid → 1 File → 1 Execution**
+- [ ] **Single task assignment**: Each agent/droid receives exactly one specific task
+- [ ] **Single file focus**: Each task works on exactly one file (or tightly related files)
+- [ ] **Clear scope definition**: Each task has defined boundaries and deliverables
+- [ ] **No multi-tasking**: Never assign multiple unrelated tasks to the same agent/droid
+- [ ] **Focused execution**: Each agent/droid works on one task at a time
+- [ ] **Atomic operations**: Tasks should be completable independently
+
+**Task decomposition strategy:**
+```javascript
+// Break complex work into atomic, file-focused tasks
+const complexProject = [
+  { agent: 'frontend-engineer-droid-forge', task: 'Create responsive dashboard component', file: 'components/Dashboard.tsx' },
+  { agent: 'backend-security-specialist-droid-forge', task: 'Implement secure API endpoints', file: 'api/auth/secure.ts' },
+  { agent: 'database-specialist-droid-forge', task: 'Optimize database queries', file: 'db/queries.ts' },
+  { agent: 'comprehensive-testing-droid-forge', task: 'Write E2E test suite', file: 'tests/auth.test.ts' },
+  { agent: 'typescript-specialist-droid-forge', task: 'Add proper TypeScript types', file: 'types/user.ts' }
+];
+```
+
+### Concurrent Execution Architecture (MUST)
+
+**Launch multiple agents/droids simultaneously:**
+- [ ] **Independent parallelism**: Multiple agents/droids work on different tasks concurrently
+- [ ] **Resource optimization**: System handles concurrent agent/droid execution
+- [ ] **Non-blocking workflow**: Continue while agents/droids work in background
+- [ ] **Coordination via TodoWrite**: Track concurrent task progress centrally
+
+**Parallel execution patterns:**
+```javascript
+// Example: Launch 5 specialized agents simultaneously for project setup
+await Promise.all([
+  launchAgent('frontend-engineer-droid-forge', 'Build React components'),
+  launchAgent('backend-security-specialist-droid-forge', 'Secure API design'),
+  launchAgent('database-specialist-droid-forge', 'Database schema optimization'),
+  launchAgent('comprehensive-testing-droid-forge', 'Test framework setup'),
+  launchAgent('typescript-specialist-droid-forge', 'Type system configuration')
+]);
+```
+
+### Agent and Droid Selection (MUST)
+
+**Review available specialized agents/droids:**
+- Check `~/.factory/droids` (personal) and `.factory/droids` (project) directories
+- Match specific task requirements to agent/droid specializations
+- Prioritize specialized agents/droids over generalist approaches
+
+**Available specializations (examples):**
+- `frontend-engineer-droid-forge` → React/Next.js, responsive design, accessibility
+- `backend-security-specialist-droid-forge` → API design, security implementation
+- `database-specialist-droid-forge` → PostgreSQL, Drizzle ORM, query optimization
+- `comprehensive-testing-droid-forge` → Unit tests, E2E tests, performance testing
+- `typescript-specialist-droid-forge` → TypeScript integration, type safety
+- `code-reviewer-droid-forge` → Code review, security analysis, performance
+- `change-auditor-droid-forge` → Change verification, security scans, reporting
+- `plan-review-droid-forge` → Pre-implementation validation, risk assessment
+- `biome-droid-forge` → Code quality, linting, formatting standards
+
+### Task Delegation Protocol (MUST)
+
+**Required delegation structure:**
+- [ ] **Use Task tool exclusively**: Always delegate via the Task tool
+- [ ] **Single clear objective**: One specific task per agent/droid
+- [ ] **Single file focus**: Work on exactly one primary file per task
+- [ ] **Defined scope**: Clear boundaries and limitations
+- [ ] **Minimal context**: Only essential files and information (1-3 files maximum)
+- [ ] **Measurable outcomes**: Specific deliverables and success criteria
+
+**Delegation format:**
+```json
+{
+  "subagent_type": "specialized-agent-or-droid-name",
+  "description": "Brief 3-5 word task description",
+  "prompt": "Detailed task description with specific requirements, constraints, and expected outcomes"
+}
+```
+
+### Context Management (MUST)
+
+**Minimal, focused context:**
+- [ ] **Primary file focus**: One main file the agent/droid will work on
+- [ ] **Essential dependencies only**: Maximum 2-3 directly related files
+- [ ] **Clear problem statement**: Expected vs actual behavior for the specific file
+- [ ] **Specific constraints**: Technical, security, or performance requirements
+
+**Strict context limitations:**
+- [ ] **Single file priority**: Always focus on one primary file per task
+- [ ] **No codebase dumps**: Never provide entire project context
+- [ ] **No irrelevant files**: Exclude documentation, examples, unrelated code
+- [ ] **No duplicate information**: Avoid context repetition across files
+- [ ] **File-specific scope**: Context limited to the immediate file and its direct dependencies
+
+### Concurrent Coordination (MUST)
+
+**Managing multiple agents/droids:**
+- [ ] **TodoWrite tracking**: Use TodoWrite to track all concurrent task progress
+- [ ] **Independent task monitoring**: Each agent/droid updates its own status
+- [ ] **Non-interfering workspaces**: Ensure agents/droids don't conflict on files
+- [ ] **Resource awareness**: Consider system limits when launching many agents/droids
+
+**Coordination workflow:**
+```javascript
+// 1. Create todos for all file-specific tasks
+createTodos(['dashboard-component', 'auth-api', 'database-queries', 'auth-tests']);
+
+// 2. Launch all agents/droids simultaneously, each on their specific file
+await Promise.all([
+  launchAgent('frontend-droid', 'Create responsive dashboard component', { file: 'components/Dashboard.tsx' }),
+  launchAgent('backend-droid', 'Implement secure auth API', { file: 'api/auth/secure.ts' }),
+  launchAgent('database-droid', 'Optimize user queries', { file: 'db/queries.ts' }),
+  launchAgent('testing-droid', 'Write auth E2E tests', { file: 'tests/auth.test.ts' })
+]);
+
+// 3. Monitor progress via TodoWrite updates for each file-specific task
+```
+
+### Quality Assurance (MUST)
+
+**Review agent/droid deliverables:**
+- [ ] **Security validation**: Check for vulnerabilities, exposed secrets, unsafe patterns
+- [ ] **Performance assessment**: Evaluate resource usage and potential bottlenecks
+- [ ] **Integration verification**: Ensure compatibility with existing codebase
+- [ ] **Standards compliance**: Verify adherence to project conventions
+- [ ] **Completeness check**: Confirm all specified requirements are met
+
+**Reject criteria:**
+- [ ] **Security violations**: Any compromise of security principles
+- [ ] **Breaking changes**: Unintended impact on existing functionality
+- [ ] **Quality standards**: Failure to meet project quality requirements
+- [ ] **Incomplete work**: Missing specified deliverables or functionality
+
+### Error Handling and Recovery (MUST)
+
+**Agent/droid failure management:**
+- [ ] **Failure analysis**: Understand root causes and error patterns
+- [ ] **Retry determination**: Assess if task can be retried with modified parameters
+- [ ] **Alternative approaches**: Have backup strategies ready
+- [ ] **Documentation**: Record failures and solutions for future reference
+
+**Common failure modes:**
+- [ ] **Context confusion**: Too much or unclear information
+- [ ] **Ambiguous requirements**: Unclear or conflicting instructions
+- [ ] **Resource limitations**: Insufficient context or tool access
+- [ ] **Scope expansion**: Task growing beyond original boundaries
+- [ ] **Concurrency conflicts**: Multiple agents/droids interfering with each other
+
+## 6. Required Coding Rules
 
 ### Pre-Development Requirements
 
@@ -578,7 +746,7 @@ This guide references external files for detailed examples and patterns. These a
 
 ---
 
-## 15. Guiding Principles (Previously Section 1)
+## 16. Guiding Principles (Previously Section 1)
 
 This guide is a living document, not a rigid set of rules. Droids should adhere to the following principles to balance consistency with the flexibility required for effective problem-solving.
 
@@ -608,7 +776,7 @@ This guide is a living document, not a rigid set of rules. Droids should adhere 
 
 ---
 
-## 26. Troubleshooting & FAQ (Previously Section 12)
+## 27. Troubleshooting & FAQ (Previously Section 12)
 
 *This section will be expanded with common problems and solutions*
 
